@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XArCLeXuZ — Home</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR ROW : header pill + separate circular menu button
+============================================================= -->
+<header class="navbar">
+  <div class="header-pill glass glass-light sheen">
+    <!-- LOGO : placeholder image link (real src injected from js/data.js → SITE.logo) -->
+    <span class="logo-wrap">
+      <img class="logo-img" data-role="logo" data-fallback="logo" src="icons/logo.svg" alt="XArCLeXuZ logo">
+    </span>
+
+    <!-- TITLE : unfilled-base + constant corner-to-corner white shine -->
+    <h1 class="site-title">XArCLeXuZ</h1>
+
+    <!-- SEARCH ICON (white) -->
+    <button class="search-btn" id="searchBtn" aria-label="Search videos" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- CIRCULAR MENU TOGGLE : hamburger (closed) / X (open) -->
+  <button class="menu-toggle glass sheen" id="menuToggle" aria-expanded="false" aria-controls="menuOverlay" aria-label="Open menu">
+    <span class="bars"><span></span><span></span><span></span></span>
+  </button>
+</header>
+
+<!-- ============================================================
+     SEARCH PANEL : keyword match on titles + tags (data.js)
+============================================================= -->
+<div class="search-panel glass" id="searchPanel" role="dialog" aria-label="Search">
+  <input type="text" class="search-input" id="searchInput" placeholder="Search videos by keyword…" autocomplete="off">
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<!-- ============================================================
+     FULLSCREEN MENU DIALOG
+============================================================= -->
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Main menu">
+  <div class="menu-panel glass">
+
+    <!-- ── SECTION 1 : LATEST CONTENT ── -->
+    <section class="latest" aria-label="Latest content">
+      <div class="latest-bar">Latest Video</div>
+      <div class="embed-wrap">
+        <!-- src is injected ONLY while menu is open (auto-play), cleared on close -->
+        <iframe id="ytEmbed" title="Latest YouTube video"
+                allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="latest-title" id="latestTitle"></div>
+
+      <!-- Mobile-only combined pill (Video | Module) as per mobile mock-up -->
+      <div class="combined-pill glass sheen">
+        <a href="#" id="mVideoBtn"  class="glow-text">Video</a>
+        <span class="divider"></span>
+        <a href="#" id="mModuleBtn" class="glow-text">Module</a>
+      </div>
+    </section>
+
+    <!-- ── SECTION 2 : INFORMATION TAB ── -->
+    <section class="info" aria-label="Information">
+      <!-- Desktop / tablet button row -->
+      <div class="info-actions">
+        <a href="#" id="videoPageBtn" class="glass-btn sheen glow-text">Video Webpage</a>
+        <a href="#" id="logoBtn" class="logo-btn glass sheen" aria-label="Channel home">
+          <img data-role="logo" data-fallback="logo" src="icons/logo.svg" alt="Logo">
+        </a>
+        <a href="#" id="modulePageBtn" class="glass-btn sheen glow-text">Module Page</a>
+      </div>
+
+      <!-- Mobile-only centered logo button -->
+      <div class="logo-mobile">
+        <a href="#" id="logoBtnMobile" class="logo-btn glass sheen" aria-label="Channel home">
+          <img data-role="logo" data-fallback="logo" src="icons/logo.svg" alt="Logo">
+        </a>
+      </div>
+
+      <div class="desc-head"><span class="desc-title">Description</span></div>
+
+      <!-- Scrollable rich text + circular-thumb scrollbar -->
+      <div class="desc-area">
+        <div class="desc-scroll" id="descScroll"></div>
+        <div class="scroll-track" id="scrollTrack">
+          <div class="scroll-thumb" id="scrollThumb"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3 : BOTTOM NAVIGATION ── -->
+    <nav class="bottom-nav" aria-label="Primary">
+      <a href="#" id="navExplore"  class="nav-pill glass sheen glow-text"><span>Explore</span></a>
+      <!-- Settings : circular icon button (swap src for your own icon file) -->
+      <a href="#" id="navSettings" class="nav-circle glass sheen" aria-label="Settings">
+        <img src="icons/settings.svg" data-fallback="settings" alt="Settings">
+      </a>
+      <a href="#" id="navContent"  class="nav-pill glass sheen glow-text"><span>Content</span></a>
+      <!-- Modules : text pill on desktop, circular icon button on mobile -->
+      <a href="#" id="navModules"  class="nav-pill glass sheen glow-text">
+        <span>Modules</span>
+        <img src="icons/modules.svg" data-fallback="modules" alt="Modules">
+      </a>
+    </nav>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     EXAMPLE PAGE CONTENT (scrollable, to test the glass + menu)
+============================================================= -->
+<main class="page">
+  <section class="hero">
+    <h2 class="hero-title glass glass-light sheen">Welcome to the <span class="accent">XArCLeXuZ</span> hub</h2>
+    <p class="hero-sub">Every video. Every resource. Every module. One menu away — tap the circular button top-right.</p>
+  </section>
+
+  <section class="cards">
+    <article class="card glass"><h3>🎬 Video Webpages</h3><p>Each upload gets a dedicated page with the embedded player plus live interaction tools, so you never juggle tabs again.</p></article>
+    <article class="card glass"><h3>🧩 Modules</h3><p>Downloadable materials, command sheets, configs and step-by-step instructions attached to every single video.</p></article>
+    <article class="card glass"><h3>📚 References &amp; FAQs</h3><p>Summarizations, source links and per-video FAQs structured properly — everything YouTube's description box can't hold.</p></article>
+  </section>
+
+  <section class="long glass" aria-label="Scroll test">
+    <h3>Scroll / compatibility test</h3>
+    <p>This block exists so you can verify the frosted header, the shine animation and the menu dialog against a scrolling background. Scroll down and watch the glass blur the content beneath it.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum euismod, felis vitae condimentum varius, sapien urna bibendum nunc, nec sodales erat augue a magna. Praesent vitae justo at nunc ultricies tincidunt. Curabitur non nulla sit amet nisl venenatis lacinia. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam venenatis aliquam.</p>
+    <p>Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Quisque velit nisi, pretium ut lacinia in, elementum id enim sed posuere.</p>
+    <p>Pellentesque in ipsum id orci porta dapibus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi sed posuere.</p>
+    <p>End of scroll test — now open the menu and test the description scrollbar with its circular thumb. 🔵</p>
+  </section>
+
+  <footer class="footer">© XArCLeXuZ — built with frosted liquid glass.</footer>
+</main>
+
+<!-- Universal metadata FIRST, then behaviour -->
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
